@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
     :root {
       --bg: #F7F5F0;
       --ink: #1A1814;
@@ -16,9 +16,9 @@
       --rule: #D8D4CC;
       --card: #FFFFFF;
     }
-
+ 
     html { scroll-behavior: smooth; }
-
+ 
     body {
       background: var(--bg);
       color: var(--ink);
@@ -27,7 +27,7 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-
+ 
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -40,19 +40,19 @@
       backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--rule);
     }
-
+ 
     .nav-name {
       font-family: 'DM Serif Display', serif;
       font-size: 1.1rem;
       letter-spacing: 0.01em;
     }
-
+ 
     .nav-links {
       display: flex;
       gap: 2rem;
       list-style: none;
     }
-
+ 
     .nav-links a {
       text-decoration: none;
       color: var(--muted);
@@ -61,9 +61,9 @@
       text-transform: uppercase;
       transition: color 0.2s;
     }
-
+ 
     .nav-links a:hover { color: var(--accent); }
-
+ 
     .hero {
       min-height: 100vh;
       display: flex;
@@ -72,7 +72,7 @@
       padding: 8rem 3rem 4rem;
       max-width: 900px;
     }
-
+ 
     .hero-label {
       font-size: 0.75rem;
       letter-spacing: 0.15em;
@@ -82,7 +82,7 @@
       opacity: 0;
       animation: fadeUp 0.6s ease forwards 0.2s;
     }
-
+ 
     .hero h1 {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(3rem, 7vw, 5.5rem);
@@ -92,12 +92,12 @@
       opacity: 0;
       animation: fadeUp 0.7s ease forwards 0.4s;
     }
-
+ 
     .hero h1 em {
       font-style: italic;
       color: var(--muted);
     }
-
+ 
     .hero-bio {
       font-size: 1.1rem;
       color: var(--muted);
@@ -106,7 +106,7 @@
       opacity: 0;
       animation: fadeUp 0.7s ease forwards 0.6s;
     }
-
+ 
     .hero-cta {
       display: flex;
       gap: 1rem;
@@ -114,7 +114,7 @@
       opacity: 0;
       animation: fadeUp 0.7s ease forwards 0.8s;
     }
-
+ 
     .btn {
       display: inline-flex;
       align-items: center;
@@ -127,39 +127,39 @@
       text-decoration: none;
       transition: all 0.2s;
     }
-
+ 
     .btn-primary {
       background: var(--accent);
       color: #fff;
     }
-
+ 
     .btn-primary:hover {
       background: #1340B0;
       transform: translateY(-1px);
     }
-
+ 
     .btn-ghost {
       border: 1px solid var(--rule);
       color: var(--ink);
       background: transparent;
     }
-
+ 
     .btn-ghost:hover {
       border-color: var(--ink);
       transform: translateY(-1px);
     }
-
+ 
     .section-divider {
       border: none;
       border-top: 1px solid var(--rule);
       margin: 0 3rem;
     }
-
+ 
     section {
       padding: 5rem 3rem;
       max-width: 1000px;
     }
-
+ 
     .section-label {
       font-size: 0.7rem;
       letter-spacing: 0.18em;
@@ -167,14 +167,14 @@
       color: var(--accent);
       margin-bottom: 0.75rem;
     }
-
+ 
     .section-title {
       font-family: 'DM Serif Display', serif;
       font-size: clamp(1.8rem, 3.5vw, 2.6rem);
       line-height: 1.15;
       margin-bottom: 2.5rem;
     }
-
+ 
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -182,12 +182,12 @@
       background: var(--rule);
       border: 1px solid var(--rule);
     }
-
+ 
     .skill-block {
       background: var(--bg);
       padding: 1.75rem;
     }
-
+ 
     .skill-block h4 {
       font-size: 0.7rem;
       letter-spacing: 0.12em;
@@ -195,13 +195,13 @@
       color: var(--muted);
       margin-bottom: 0.75rem;
     }
-
+ 
     .skill-block p {
       font-size: 0.9rem;
       line-height: 1.7;
       color: var(--ink);
     }
-
+ 
     .projects-list {
       display: flex;
       flex-direction: column;
@@ -209,7 +209,7 @@
       background: var(--rule);
       border: 1px solid var(--rule);
     }
-
+ 
     .project-card {
       background: var(--bg);
       padding: 2rem;
@@ -219,36 +219,36 @@
       align-items: start;
       transition: background 0.2s;
     }
-
+ 
     .project-card:hover { background: var(--card); }
-
+ 
     .project-number {
       font-family: 'DM Serif Display', serif;
       font-size: 0.75rem;
       color: var(--muted);
       margin-bottom: 0.5rem;
     }
-
+ 
     .project-title {
       font-family: 'DM Serif Display', serif;
       font-size: 1.3rem;
       margin-bottom: 0.5rem;
     }
-
+ 
     .project-desc {
       font-size: 0.875rem;
       color: var(--muted);
       line-height: 1.65;
       max-width: 480px;
     }
-
+ 
     .project-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
       margin-top: 1rem;
     }
-
+ 
     .tag {
       font-size: 0.7rem;
       letter-spacing: 0.08em;
@@ -258,14 +258,14 @@
       color: var(--muted);
       border-radius: 1px;
     }
-
+ 
     .project-links {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
       align-items: flex-end;
     }
-
+ 
     .project-link {
       font-size: 0.75rem;
       letter-spacing: 0.08em;
@@ -274,9 +274,9 @@
       text-decoration: none;
       transition: opacity 0.2s;
     }
-
+ 
     .project-link:hover { opacity: 0.7; }
-
+ 
     .coming-soon {
       font-size: 0.7rem;
       letter-spacing: 0.08em;
@@ -286,7 +286,7 @@
       padding: 0.2rem 0.6rem;
       border-radius: 1px;
     }
-
+ 
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -294,12 +294,12 @@
       background: var(--rule);
       border: 1px solid var(--rule);
     }
-
+ 
     .contact-item {
       background: var(--bg);
       padding: 1.75rem;
     }
-
+ 
     .contact-item h4 {
       font-size: 0.7rem;
       letter-spacing: 0.12em;
@@ -307,16 +307,16 @@
       color: var(--muted);
       margin-bottom: 0.5rem;
     }
-
+ 
     .contact-item a {
       font-size: 0.95rem;
       color: var(--ink);
       text-decoration: none;
       transition: color 0.2s;
     }
-
+ 
     .contact-item a:hover { color: var(--accent); }
-
+ 
     footer {
       padding: 2rem 3rem;
       border-top: 1px solid var(--rule);
@@ -324,28 +324,28 @@
       justify-content: space-between;
       align-items: center;
     }
-
+ 
     footer p {
       font-size: 0.8rem;
       color: var(--muted);
     }
-
+ 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
+ 
     .fade-in {
       opacity: 0;
       transform: translateY(12px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-
+ 
     .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
+ 
     @media (max-width: 640px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.25rem; }
@@ -359,7 +359,7 @@
   </style>
 </head>
 <body>
-
+ 
   <nav>
     <span class="nav-name">Mitch Sultana</span>
     <ul class="nav-links">
@@ -369,7 +369,7 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
-
+ 
   <div class="hero">
     <p class="hero-label">Operations · Digital Transformation · Program Management</p>
     <h1>Building systems<br>that <em>actually</em> work.</h1>
@@ -381,9 +381,9 @@
       <a href="https://www.linkedin.com/in/mitchell-sultana/" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
     </div>
   </div>
-
+ 
   <hr class="section-divider"/>
-
+ 
   <section id="skills">
     <p class="section-label fade-in">Capabilities</p>
     <h2 class="section-title fade-in">What I bring<br>to the table.</h2>
@@ -414,14 +414,14 @@
       </div>
     </div>
   </section>
-
+ 
   <hr class="section-divider"/>
-
+ 
   <section id="work">
     <p class="section-label fade-in">Portfolio</p>
     <h2 class="section-title fade-in">Selected projects.</h2>
     <div class="projects-list fade-in">
-
+ 
       <div class="project-card">
         <div>
           <p class="project-number">01</p>
@@ -444,7 +444,7 @@
           <a href="https://github.com/sultanamitch/ibm-hr-attrition" target="_blank" class="project-link">GitHub ↗</a>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <div>
           <p class="project-number">02</p>
@@ -463,7 +463,7 @@
           <a href="https://github.com/sultanamitch/energy-project-screening" target="_blank" class="project-link">GitHub ↗</a>
         </div>
       </div>
-
+ 
       <div class="project-card">
         <div>
           <p class="project-number">03</p>
@@ -482,12 +482,12 @@
           <a href="https://github.com/sultanamitch/friction-first-screener" target="_blank" class="project-link">GitHub ↗</a>
         </div>
       </div>
-
+ 
     </div>
   </section>
-
+ 
   <hr class="section-divider"/>
-
+ 
   <section id="contact">
     <p class="section-label fade-in">Contact</p>
     <h2 class="section-title fade-in">Let's connect.</h2>
@@ -510,21 +510,22 @@
       </div>
     </div>
   </section>
-
+ 
   <footer>
     <p>© 2026 Mitch Sultana</p>
     <p>Built from scratch — no templates.</p>
   </footer>
-
+ 
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) e.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
-
+ 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
-
+ 
 </body>
 </html>
+ 
