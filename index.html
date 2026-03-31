@@ -28,7 +28,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -65,7 +64,6 @@
 
     .nav-links a:hover { color: var(--accent); }
 
-    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -151,14 +149,12 @@
       transform: translateY(-1px);
     }
 
-    /* ── DIVIDER ── */
     .section-divider {
       border: none;
       border-top: 1px solid var(--rule);
       margin: 0 3rem;
     }
 
-    /* ── SECTION WRAPPER ── */
     section {
       padding: 5rem 3rem;
       max-width: 1000px;
@@ -179,7 +175,6 @@
       margin-bottom: 2.5rem;
     }
 
-    /* ── SKILLS ── */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -207,7 +202,6 @@
       color: var(--ink);
     }
 
-    /* ── PROJECTS ── */
     .projects-list {
       display: flex;
       flex-direction: column;
@@ -218,19 +212,15 @@
 
     .project-card {
       background: var(--bg);
-      padding: 2rem 2rem 2rem 2rem;
+      padding: 2rem;
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 1rem;
       align-items: start;
       transition: background 0.2s;
-      text-decoration: none;
-      color: inherit;
     }
 
-    .project-card:hover {
-      background: var(--card);
-    }
+    .project-card:hover { background: var(--card); }
 
     .project-number {
       font-family: 'DM Serif Display', serif;
@@ -287,7 +277,16 @@
 
     .project-link:hover { opacity: 0.7; }
 
-    /* ── CONTACT ── */
+    .coming-soon {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px dashed var(--rule);
+      padding: 0.2rem 0.6rem;
+      border-radius: 1px;
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -318,7 +317,6 @@
 
     .contact-item a:hover { color: var(--accent); }
 
-    /* ── FOOTER ── */
     footer {
       padding: 2rem 3rem;
       border-top: 1px solid var(--rule);
@@ -332,7 +330,6 @@
       color: var(--muted);
     }
 
-    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -349,7 +346,6 @@
       transform: translateY(0);
     }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.25rem; }
@@ -364,7 +360,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <span class="nav-name">Mitch Sultana</span>
     <ul class="nav-links">
@@ -374,12 +369,11 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <div class="hero">
     <p class="hero-label">Operations · Data · Technology</p>
     <h1>Building systems<br>that <em>actually</em> work.</h1>
     <p class="hero-bio">
-      Digital Transformation & Operations professional with a background in Agile coaching, project management, and full-stack development — now applying data analytics to uncover the insights that drive real operational decisions.
+      Operations & Digital Transformation professional with a background in Agile coaching, cross-functional program management, and data analytics — focused on driving internal systems improvement and operational change where systems thinking meets business decisions at scale.
     </p>
     <div class="hero-cta">
       <a href="#work" class="btn btn-primary">View Projects</a>
@@ -389,7 +383,6 @@
 
   <hr class="section-divider"/>
 
-  <!-- SKILLS -->
   <section id="skills">
     <p class="section-label fade-in">Capabilities</p>
     <h2 class="section-title fade-in">What I bring<br>to the table.</h2>
@@ -403,25 +396,23 @@
         <p>Tableau Public dashboards that communicate findings clearly to both technical and business audiences.</p>
       </div>
       <div class="skill-block">
-        <h4>Operations</h4>
-        <p>Agile coaching, project management, digital transformation — process design and execution at scale.</p>
+        <h4>Operations & Program Management</h4>
+        <p>Agile coaching, cross-functional project management, and digital transformation — process design and execution at scale.</p>
       </div>
       <div class="skill-block">
-        <h4>Development</h4>
-        <p>Full-stack experience across MERN, C#/.NET, and Python. Comfortable building the tools the analysis needs.</p>
+        <h4>Systems Thinking</h4>
+        <p>Comfortable bridging business problems and technical solutions — from process design to data infrastructure to implementation.</p>
       </div>
     </div>
   </section>
 
   <hr class="section-divider"/>
 
-  <!-- PROJECTS -->
   <section id="work">
     <p class="section-label fade-in">Portfolio</p>
     <h2 class="section-title fade-in">Selected projects.</h2>
     <div class="projects-list fade-in">
 
-      <!-- Project 1 -->
       <div class="project-card">
         <div>
           <p class="project-number">01</p>
@@ -444,31 +435,9 @@
         </div>
       </div>
 
-      <!-- Project 2 -->
       <div class="project-card">
         <div>
           <p class="project-number">02</p>
-          <h3 class="project-title">Friction-First: Tech Sector Earnings Screener</h3>
-          <p class="project-desc">
-            Built an earnings screener to test whether companies that remove customer friction outperform legacy tech. Used yfinance API to pull live financial data, stored in SQLite, and visualized findings in Tableau Public.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag">SQLite</span>
-            <span class="tag">yfinance</span>
-            <span class="tag">Tableau</span>
-          </div>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/sultanamitch/friction-first-screener" target="_blank" class="project-link">GitHub ↗</a>
-        </div>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="project-card">
-        <div>
-          <p class="project-number">03</p>
           <h3 class="project-title">CAISO Queue Analysis — Energy Project Screening</h3>
           <p class="project-desc">
             Analyzed California ISO's interconnection queue to identify renewable energy development patterns by technology type, capacity, and project status. Built a reproducible data pipeline from raw Excel to clean Parquet format.
@@ -485,12 +454,31 @@
         </div>
       </div>
 
+      <div class="project-card">
+        <div>
+          <p class="project-number">03</p>
+          <h3 class="project-title">Amber Hollow — E-commerce Analytics</h3>
+          <p class="project-desc">
+            Real-world implementation of a full analytics stack on a live e-commerce business. Built Meta Pixel + CAPI integration, GA4 setup, and data-driven ad optimization for a Shopify dropshipping store targeting the 55+ demographic.
+          </p>
+          <div class="project-tags">
+            <span class="tag">GA4</span>
+            <span class="tag">Meta Pixel</span>
+            <span class="tag">CAPI</span>
+            <span class="tag">Shopify</span>
+            <span class="tag">Ad Analytics</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <span class="coming-soon">Case Study Coming Soon</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <hr class="section-divider"/>
 
-  <!-- CONTACT -->
   <section id="contact">
     <p class="section-label fade-in">Contact</p>
     <h2 class="section-title fade-in">Let's connect.</h2>
@@ -509,24 +497,20 @@
       </div>
       <div class="contact-item">
         <h4>Location</h4>
-        <a>Chicago, IL</a>
+        <span style="font-size:0.95rem; color: var(--ink);">Chicago, IL</span>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2026 Mitch Sultana</p>
     <p>Built from scratch — no templates.</p>
   </footer>
 
   <script>
-    // Scroll fade-in
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-        }
+        if (e.isIntersecting) e.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
 
