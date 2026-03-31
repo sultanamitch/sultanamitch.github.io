@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IBM HR Attrition — Executive Summary | Mitch Sultana</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F5F0;
+      --ink: #1A1814;
+      --muted: #7A7670;
+      --accent: #1B4FD8;
+      --rule: #D8D4CC;
+      --card: #FFFFFF;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: rgba(247, 245, 240, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .nav-back {
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--accent); }
+
+    .hero {
+      padding: 8rem 3rem 3rem;
+      max-width: 800px;
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 2rem;
+    }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0 3rem;
+    }
+
+    .content {
+      padding: 3rem;
+      max-width: 800px;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .section-label:first-child { margin-top: 0; }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    p strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .findings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin: 1.5rem 0;
+    }
+
+    .finding-block {
+      background: var(--bg);
+      padding: 1.25rem 1.5rem;
+    }
+
+    .finding-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .finding-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .recommendations {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin: 1.5rem 0;
+    }
+
+    .rec-item {
+      background: var(--bg);
+      padding: 1.25rem 1.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .rec-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding-top: 0.1rem;
+    }
+
+    .rec-text {
+      font-size: 0.9rem;
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    .rec-text strong {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.7rem 1.5rem;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: #1340B0; transform: translateY(-1px); }
+
+    .btn-ghost {
+      border: 1px solid var(--rule);
+      color: var(--ink);
+    }
+
+    .btn-ghost:hover { border-color: var(--ink); transform: translateY(-1px); }
+
+    footer {
+      padding: 2rem 3rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3rem;
+    }
+
+    footer p { font-size: 0.8rem; color: var(--muted); }
+
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero, .content { padding-left: 1.5rem; padding-right: 1.5rem; }
+      hr.rule { margin: 0 1.5rem; }
+      .findings-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-name">Mitch Sultana</a>
+    <a href="index.html" class="nav-back">← Back to Portfolio</a>
+  </nav>
+
+  <div class="hero">
+    <p class="hero-label">Executive Summary</p>
+    <h1>IBM HR Analytics —<br>Employee Attrition</h1>
+    <p class="hero-meta">1,470 employees · 6 analytical dimensions · Kaggle dataset</p>
+  </div>
+
+  <hr class="rule"/>
+
+  <div class="content">
+
+    <p class="section-label">Overview</p>
+    <h2>Why do IBM employees leave?</h2>
+
+    <p>I analyzed IBM employee attrition data to figure out why people leave. What I found was when I looked at the effort required for an IBM employee to do their job — overtime, business travel required — I saw that the more effort required from IBM employees to do their job, the higher attrition I saw. This data shows us that if IBM can lower the effort required for IBM employees to do their job, IBM can keep talent and reduce the risk of needing to replace employees and onboard new ones.</p>
+
+    <p>I saw that career growth has a direct impact on attrition. If IBM employees receive promotions when deserved I saw lower attrition, and when IBM employees stay at IBM longer they tend to stay employed longer, reducing attrition.</p>
+
+    <p>When I looked at performance ratings at IBM I noticed the data was not fully reliable — the scale runs 1 through 4, but the only recorded scores range from 3-4. This may be due to managers not being willing to hand out lower scores in fear it would reflect poorly on them. This requires more data to fully understand.</p>
+
+    <p>When I analyzed employee satisfaction I saw that IBM employees with higher job involvement scores had lower attrition rates — a pretty wide delta — with scores of 1 showing a <strong>33.7% attrition rate vs 9.0% for ratings of 4.</strong></p>
+
+    <p>IBM employee profiles pointed to my theory of life stage and survivorship bias — visible in marital status, job level, and age. Sales representatives at IBM have the highest attrition rate of any role at <strong>39.8%</strong>, which is consistent with the nature of sales positions and their historically high turnover.</p>
+
+    <p class="section-label">Key Numbers</p>
+    <h2>Strongest findings.</h2>
+
+    <div class="findings-grid">
+      <div class="finding-block">
+        <div class="finding-number">3x</div>
+        <div class="finding-label">Overtime employees leave at nearly 3x the rate of non-overtime employees (30.5% vs 10.4%)</div>
+      </div>
+      <div class="finding-block">
+        <div class="finding-number">39.8%</div>
+        <div class="finding-label">Sales Representatives — highest attrition of any job role in the dataset</div>
+      </div>
+      <div class="finding-block">
+        <div class="finding-number">33.7%</div>
+        <div class="finding-label">Attrition rate for employees with lowest job involvement score vs 9.0% for highest</div>
+      </div>
+      <div class="finding-block">
+        <div class="finding-number">26.3%</div>
+        <div class="finding-label">Entry-level (Job Level 1) attrition vs 4.7% for managers — 5x difference</div>
+      </div>
+    </div>
+
+    <p class="section-label">Recommendations</p>
+    <h2>What IBM should do.</h2>
+
+    <div class="recommendations">
+      <div class="rec-item">
+        <span class="rec-number">01</span>
+        <div class="rec-text">
+          <strong>Audit overtime and travel requirements</strong>
+          Employees required to work overtime or travel frequently are 3x more likely to leave. IBM should evaluate whether these demands are structurally necessary or reduceable, particularly in high-attrition roles.
+        </div>
+      </div>
+      <div class="rec-item">
+        <span class="rec-number">02</span>
+        <div class="rec-text">
+          <strong>Implement structured promotion timelines</strong>
+          Attrition peaks for employees in the 6-10 year tenure window — a clear promotion expectation threshold. IBM should examine promotion cadence for mid-tenure employees and create clearer career pathing.
+        </div>
+      </div>
+      <div class="rec-item">
+        <span class="rec-number">03</span>
+        <div class="rec-text">
+          <strong>Improve job involvement through role ownership</strong>
+          Job involvement showed the strongest correlation with attrition of any satisfaction variable. IBM should focus on connecting employees to meaningful work through clearer role ownership and career development.
+        </div>
+      </div>
+      <div class="rec-item">
+        <span class="rec-number">04</span>
+        <div class="rec-text">
+          <strong>Capture attrition type at separation</strong>
+          The dataset does not distinguish voluntary resignation from involuntary termination. IBM should capture this data point at the point of separation to enable more precise future analysis.
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="https://public.tableau.com/app/profile/mitch.sultana/viz/Book1_17743316025170/WorkforceEffortFactors" target="_blank" class="btn btn-primary">View Dashboard ↗</a>
+      <a href="https://github.com/sultanamitch/ibm-hr-attrition" target="_blank" class="btn btn-ghost">GitHub Repo ↗</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Mitch Sultana</p>
+    <p><a href="index.html" style="color: var(--muted); text-decoration: none;">← Back to Portfolio</a></p>
+  </footer>
+
+</body>
+</html>
