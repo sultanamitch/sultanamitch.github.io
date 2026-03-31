@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mitch Sultana</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F5F0;
+      --ink: #1A1814;
+      --muted: #7A7670;
+      --accent: #1B4FD8;
+      --rule: #D8D4CC;
+      --card: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: rgba(247, 245, 240, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 3rem 4rem;
+      max-width: 900px;
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.2s;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.4s;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .hero-bio {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.75;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.6s;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.8s;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #1340B0;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      background: transparent;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0 3rem;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    section {
+      padding: 5rem 3rem;
+      max-width: 1000px;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      line-height: 1.15;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .skill-block {
+      background: var(--bg);
+      padding: 1.75rem;
+    }
+
+    .skill-block h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-block p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+
+    /* ── PROJECTS ── */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .project-card {
+      background: var(--bg);
+      padding: 2rem 2rem 2rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: start;
+      transition: background 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-card:hover {
+      background: var(--card);
+    }
+
+    .project-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 480px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--rule);
+      color: var(--muted);
+      border-radius: 1px;
+    }
+
+    .project-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-end;
+    }
+
+    .project-link {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .project-link:hover { opacity: 0.7; }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .contact-item {
+      background: var(--bg);
+      padding: 1.75rem;
+    }
+
+    .contact-item h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-item a {
+      font-size: 0.95rem;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-item a:hover { color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 3rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.25rem; }
+      .hero, section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .section-divider { margin: 0 1.5rem; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-links { flex-direction: row; align-items: flex-start; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-name">Mitch Sultana</span>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-label">Operations · Data · Technology</p>
+    <h1>Building systems<br>that <em>actually</em> work.</h1>
+    <p class="hero-bio">
+      Digital Transformation & Operations professional with a background in Agile coaching, project management, and full-stack development — now applying data analytics to uncover the insights that drive real operational decisions.
+    </p>
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-primary">View Projects</a>
+      <a href="https://www.linkedin.com/in/mitchell-sultana/" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+    </div>
+  </div>
+
+  <hr class="section-divider"/>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label fade-in">Capabilities</p>
+    <h2 class="section-title fade-in">What I bring<br>to the table.</h2>
+    <div class="skills-grid fade-in">
+      <div class="skill-block">
+        <h4>Data Analysis</h4>
+        <p>Python, pandas, SQL, SQLite, matplotlib — end-to-end analysis from raw data to actionable insight.</p>
+      </div>
+      <div class="skill-block">
+        <h4>Visualization</h4>
+        <p>Tableau Public dashboards that communicate findings clearly to both technical and business audiences.</p>
+      </div>
+      <div class="skill-block">
+        <h4>Operations</h4>
+        <p>Agile coaching, project management, digital transformation — process design and execution at scale.</p>
+      </div>
+      <div class="skill-block">
+        <h4>Development</h4>
+        <p>Full-stack experience across MERN, C#/.NET, and Python. Comfortable building the tools the analysis needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider"/>
+
+  <!-- PROJECTS -->
+  <section id="work">
+    <p class="section-label fade-in">Portfolio</p>
+    <h2 class="section-title fade-in">Selected projects.</h2>
+    <div class="projects-list fade-in">
+
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div>
+          <p class="project-number">01</p>
+          <h3 class="project-title">IBM HR Analytics — Employee Attrition</h3>
+          <p class="project-desc">
+            Analyzed 1,470 IBM employee records across six analytical dimensions to identify the key drivers of attrition. Found that overtime employees leave at nearly 3x the rate of non-overtime employees, and Sales Representatives had the highest attrition of any role at 39.8%.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">pandas</span>
+            <span class="tag">matplotlib</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">SQLite</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://public.tableau.com/app/profile/mitch.sultana/viz/Book1_17743316025170/WorkforceEffortFactors" target="_blank" class="project-link">Dashboard ↗</a>
+          <a href="https://github.com/sultanamitch/ibm-hr-attrition" target="_blank" class="project-link">GitHub ↗</a>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div>
+          <p class="project-number">02</p>
+          <h3 class="project-title">Friction-First: Tech Sector Earnings Screener</h3>
+          <p class="project-desc">
+            Built an earnings screener to test whether companies that remove customer friction outperform legacy tech. Used yfinance API to pull live financial data, stored in SQLite, and visualized findings in Tableau Public.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">SQLite</span>
+            <span class="tag">yfinance</span>
+            <span class="tag">Tableau</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/sultanamitch/friction-first-screener" target="_blank" class="project-link">GitHub ↗</a>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div>
+          <p class="project-number">03</p>
+          <h3 class="project-title">CAISO Queue Analysis — Energy Project Screening</h3>
+          <p class="project-desc">
+            Analyzed California ISO's interconnection queue to identify renewable energy development patterns by technology type, capacity, and project status. Built a reproducible data pipeline from raw Excel to clean Parquet format.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">pandas</span>
+            <span class="tag">matplotlib</span>
+            <span class="tag">Parquet</span>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/sultanamitch/energy-project-screening" target="_blank" class="project-link">GitHub ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider"/>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label fade-in">Contact</p>
+    <h2 class="section-title fade-in">Let's connect.</h2>
+    <div class="contact-grid fade-in">
+      <div class="contact-item">
+        <h4>Email</h4>
+        <a href="mailto:sultanamitch@gmail.com">sultanamitch@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <h4>LinkedIn</h4>
+        <a href="https://www.linkedin.com/in/mitchell-sultana/" target="_blank">mitchell-sultana ↗</a>
+      </div>
+      <div class="contact-item">
+        <h4>GitHub</h4>
+        <a href="https://github.com/sultanamitch" target="_blank">sultanamitch ↗</a>
+      </div>
+      <div class="contact-item">
+        <h4>Location</h4>
+        <a>Chicago, IL</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Mitch Sultana</p>
+    <p>Built from scratch — no templates.</p>
+  </footer>
+
+  <script>
+    // Scroll fade-in
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
