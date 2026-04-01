@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAISO Queue Analysis — Executive Summary | Mitch Sultana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F5F0;
+      --ink: #1A1814;
+      --muted: #7A7670;
+      --accent: #1B4FD8;
+      --rule: #D8D4CC;
+      --card: #FFFFFF;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 245, 240, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: var(--ink); }
+    nav .back { font-size: 0.875rem; color: var(--muted); }
+    nav .back:hover { color: var(--accent); text-decoration: none; }
+
+    /* LAYOUT */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* HEADER */
+    .project-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* SECTIONS */
+    .section { margin-bottom: 3.5rem; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 1.25rem;
+    }
+
+    p { margin-bottom: 1rem; color: var(--ink); }
+
+    /* STAT CARDS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.5rem 1.25rem;
+    }
+
+    .stat-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* RECOMMENDATIONS */
+    .rec-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .rec-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .rec-number {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--accent);
+      min-width: 2rem;
+      padding-top: 0.1rem;
+    }
+
+    .rec-text strong { display: block; margin-bottom: 0.25rem; }
+    .rec-text { font-size: 0.95rem; color: var(--ink); line-height: 1.6; }
+
+    /* LINKS */
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.25rem;
+      border: 1px solid var(--ink);
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn:hover { background: var(--ink); color: var(--bg); text-decoration: none; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://sultanamitch.github.io/index.html" class="logo">Mitch Sultana</a>
+    <a href="https://sultanamitch.github.io/index.html" class="back">← Back to Portfolio</a>
+  </nav>
+
+  <div class="container">
+
+    <p class="project-label">Executive Summary</p>
+    <h1>CAISO Queue Analysis — Energy Project Screening</h1>
+    <p class="meta">326 active queue projects · 4 analytical dimensions · CAISO public data</p>
+
+    <div class="section">
+      <p class="section-label">Overview</p>
+      <h2>What makes an energy project deliverable?</h2>
+      <p>Before a power project can connect to California's electrical grid, it has to enter CAISO's interconnection queue and work through a series of engineering studies. The outcome of that process, Full Capacity deliverability vs Energy Only has a direct impact on project viability and financing.</p>
+      <p>I pulled CAISO's public interconnection queue data and analyzed 326 active projects to understand what actually drives deliverability outcomes. The short answer: geography matters more than technology, and adding battery storage to a solar project removes downside risk without improving your odds at the top end.</p>
+      <p>Battery storage projects that were standalone projects outperform everything else in the queue. But once you're in a congested transmission region, no amount of technology mix changes that constraint.</p>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Key Numbers</p>
+      <h2>Strongest findings.</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">90%</div>
+          <div class="stat-desc">Of active queue projects are battery storage or solar — reflecting California's clean energy policy priorities</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">~80%</div>
+          <div class="stat-desc">Full Capacity deliverability rate for standalone battery projects — highest of any technology type</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">37→13%</div>
+          <div class="stat-desc">Energy Only risk drops from 37% to 13% when storage is added to solar — but Full Capacity rates stay flat</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">#1</div>
+          <div class="stat-desc">Geography is the dominant deliverability driver — Metro LA and Northern CA outperform Kern and Eastern regions</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-label">Takeaways</p>
+      <h2>What this data suggests.</h2>
+      <ul class="rec-list">
+        <li class="rec-item">
+          <span class="rec-number">01</span>
+          <div class="rec-text">
+            <strong>Screen by region before screening by technology</strong>
+            Transmission congestion is the binding constraint on Full Capacity outcomes. A project in a congested region will underperform regardless of its technology mix. Region should be the first filter in any project screening framework.
+          </div>
+        </li>
+        <li class="rec-item">
+          <span class="rec-number">02</span>
+          <div class="rec-text">
+            <strong>Battery standalone outperforms hybrid on deliverability</strong>
+            Hybrid projects cut worst-case risk but don't improve best-case outcomes. For developers optimizing for Full Capacity status, standalone battery in a favorable region is a stronger position than hybrid in a constrained one.
+          </div>
+        </li>
+        <li class="rec-item">
+          <span class="rec-number">03</span>
+          <div class="rec-text">
+            <strong>Queue data needs a vintage filter</strong>
+            CAISO's queue includes projects at very different stages of the study process. Deliverability outcomes for early-stage projects are preliminary and subject to change — any analysis should segment by study phase to avoid mixing confirmed and speculative outcomes.
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="project-links">
+      <a href="https://github.com/sultanamitch/energy-project-screening" class="btn" target="_blank">GitHub Repo ↗</a>
+    </div>
+
+  </div>
+
+  <footer>© 2026 Mitch Sultana · <a href="https://sultanamitch.github.io/index.html">← Back to Portfolio</a></footer>
+
+</body>
+</html>
